@@ -22,6 +22,30 @@ router.get("/contact",function(req,res){
   res.sendFile(path + "contact.html");
 });
 
+router.get("/contacts",function(req,res){
+  res.sendFile(path + "contacts.html");
+});
+
+router.get("/bio",function(req,res){
+  res.sendFile(path + "bio.html");
+});
+
+router.get("/mentorship",function(req,res){
+  res.sendFile(path + "mentorship.html");
+});
+
+router.get("/articles",function(req,res){
+  res.sendFile(path + "articles.html");
+});
+
+router.get("/videos",function(req,res){
+  res.sendFile(path + "videos.html");
+});
+
+router.get("/blog",function(req,res){
+  res.sendFile(path + "blog.html");
+});
+
 router.get("/nodejs-blogapp",function(req,res){
   res.sendFile(path + "nodejs-blogapp.html");
 });

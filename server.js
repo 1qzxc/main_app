@@ -137,6 +137,14 @@ router.get("/python-linked",function(req,res){
   res.sendFile(path + "python-linked.html");
 });
 
+router.get("/blog",function(req,res){
+  res.sendFile(path + "blog.html");
+});
+
+router.get("/like_button.js",function(req,res){
+  res.sendFile(path + "like_button.js");
+});
+
 
 var publicDir = require('path').join(__dirname,'/views/public');
 app.use(express.static(publicDir));

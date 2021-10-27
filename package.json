@@ -2,13 +2,13 @@
   "name": "website-using-express",
   "version": "0.0.1",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "bootstrap": "4.3.1",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
-    "nodemon": "^1.19.3",
+    "nodemon": "^1.19.4",
     "package.json": "^2.0.1",
     "reload": "^3.0.1"
   },

@@ -18,18 +18,6 @@ router.get("/about",function(req,res){
   res.sendFile(path + "about.html");
 });
 
-router.get("/contact",function(req,res){
-  res.sendFile(path + "contact.html");
-});
-
-router.get("/contacts",function(req,res){
-  res.sendFile(path + "contacts.html");
-});
-
-router.get("/bio",function(req,res){
-  res.sendFile(path + "bio.html");
-});
-
 router.get("/mentorship",function(req,res){
   res.sendFile(path + "mentorship.html");
 });

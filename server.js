@@ -30,8 +30,8 @@ router.get("/videos",function(req,res){
   res.sendFile(path + "videos.html");
 });
 
-router.get("/blog",function(req,res){
-  res.sendFile(path + "blog.html");
+router.get("/projects",function(req,res){
+  res.sendFile(path + "projects.html");
 });
 
 router.get("/nodejs-blogapp",function(req,res){

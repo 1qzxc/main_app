@@ -9,6 +9,15 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="script.js"></script>
+<style>/* ============ desktop view ============ */
+  @media all and (min-width: 780px) {
+    .navbar .nav-item .dropdown-menu{ display: none; }
+    .navbar .nav-item:hover .nav-link{   }
+    .navbar .nav-item:hover .dropdown-menu{ display: block; }
+    .navbar .nav-item .dropdown-menu{ margin-top:0; }
+  }	
+  /* ============ desktop view .end// ============ */
+</style>
 </head>
 <body>
 <div>
@@ -18,7 +27,15 @@
       <li><a href="/">Personal Blog</a></li>
       <li><a href="/projects">Projects</a></li>
       <li><a href="/videos">Videos</a></li>
-      <li class="active"><a href="/articles">Articles<span class="sr-only">(current)</span></a></li>
+      <!--  <li class="active"><a href="/articles">Articles<span class="sr-only">(current)</span></a></li> -->
+      <li class="nav-item dropdown active">
+        <a class="nav-link  dropdown-toggle" href="/articles" data-bs-toggle="dropdown">  Articles V </a>
+         <ul class="dropdown-menu">
+         <li><a class="dropdown-item" href="#">[geoeconomics]</a></li>
+         <li><a class="dropdown-item" href="#">[programming]</a></li>
+         <li><a class="dropdown-item" href="#">[devops]</a></li>
+         </ul>
+     </li>
       <li><a href="/mentorship">Mentorship</a></li>
       <li><a href="/about">About</a></li>
     </ul>
@@ -52,5 +69,6 @@
 <br>
 <br>
 <hr>
+
 </body>
 </html>

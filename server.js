@@ -3,7 +3,7 @@ var app = express();
 var router = express.Router();
 var path = __dirname + '/views/';
 
-
+app.set("view engine", "ejs");
 
 router.use(function (req,res,next) {
   console.log("/" + req.method);
@@ -156,7 +156,7 @@ router.get("/*",function(req,res){
 });
 
 
-app.set("view engine", "ejs");
+
 
 var publicDir = require('path').join(__dirname,'/views/public');
 app.use(express.static(publicDir));

@@ -1,7 +1,18 @@
-var express = require("express");
-var app = express();
-var router = express.Router();
-var path = __dirname + '/views/';
+const express = require("express");
+const app = express();
+const router = express.Router();
+const path = __dirname + '/views/';
+
+var publicDir = require('path').join(__dirname,'/views/public');
+app.use(express.static(publicDir));
+
+app.use("/",router);
+
+app.use("*",function(req,res){
+  res.sendFile(path + "404.html");
+});
+
+
 
 app.set("view engine", "ejs");
 
@@ -10,9 +21,13 @@ router.use(function (req,res,next) {
   next();
 });
 
-router.get("/",function(req,res){
-  res.sendFile(path + "index.html");
+app.get('/', (request, response) => {
+  return response.send('OK');
 });
+
+//router.get("/",function(req,res){
+//  res.sendFile(path + "index.ejs");
+//});
 
 router.get("/about",function(req,res){
   res.sendFile(path + "about.html");
@@ -157,15 +172,6 @@ router.get("/*",function(req,res){
 
 
 
-
-var publicDir = require('path').join(__dirname,'/views/public');
-app.use(express.static(publicDir));
-
-app.use("/",router);
-
-app.use("*",function(req,res){
-  res.sendFile(path + "404.html");
-});
 
 
 app.listen(8089,function(){

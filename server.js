@@ -14,23 +14,31 @@ app.set("view engine", "ejs");
 app.set('views', path);
 
 
-app.get('/', (request, response) => { // he other hand, is part of Express' application routing and is intended for matching and handling a specific route when requested with the GET HTTP verb:
-  return response.send('OK');
-});
+//app.get('/', (request, response) => { // he other hand, is part of Express' application routing and is intended for matching and handling a specific route when requested with the GET HTTP verb:
+//  return response.send('OK');
+//});
 
 app.get('/index', (request, response) => {
   response.render('index', {
-    subject: 'EJS template engine',
+    subject: 'morozovme',
     name: 'our template',
-    link: 'https://google.com'
+    link: 'https://google.com',
+    focus: 'blog'
+  });
+});
+
+app.get('/pet', (request, response) => {
+  response.render('pet', {
+    subject: 'Study projects',
+    entity: 'Study projects',
+    link: 'https://google.com',
+    focus: 'pet'
   });
 });
 
 // https://stackoverflow.com/questions/15601703/difference-between-app-use-and-app-get-in-express-js#:~:text=app.get%20is%20called%20when%20the%20HTTP%20method%20is,you%20access%20to.%20Difference%20between%20app.use%20%26%20app.get%3A
-//app.use("/",router); // <--- binging middleware, sets root path for 'app' and use router for subpaths 
+app.use("/",router); // <--- binging middleware, sets root path for 'app' and use router for subpaths 
 //  limits the middleware to only apply to any paths requested that begin with it
-
-
 
 router.use(function (req,res,next) {  // <---- use chain of javascript functions on this path 
   console.log("/" + req.method + "  req = " + req.ip);
@@ -42,7 +50,7 @@ router.use(function (req,res,next) {  // <---- use chain of javascript functions
 //});
 
 router.get("/",function(req,res){
-  return res.send('OK');
+  res.sendFile(path + "index.html");
 });
 
 router.get("/about",function(req,res){

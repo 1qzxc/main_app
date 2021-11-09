@@ -2,32 +2,48 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const path = __dirname + '/views/';
+//const path = require('path');
 
-var publicDir = require('path').join(__dirname,'/views/public');
-app.use(express.static(publicDir));
+// reowrks using ejs + https://blog.logrocket.com/top-express-js-template-engines-for-dynamic-html-pages/ 
+// remove public dir in order to render pages using EJS on the fly and send them
+//const publicDir = require('path').join(__dirname,'/views/public');
+//app.use(express.static(publicDir));
 
-app.use("/",router);
-
-app.use("*",function(req,res){
-  res.sendFile(path + "404.html");
-});
-
-
-
+// on the differences between app.set,get,router.get : https://stackoverflow.com/questions/27227650/difference-between-app-use-and-router-use-in-express
 app.set("view engine", "ejs");
+app.set('views', path);
 
-router.use(function (req,res,next) {
-  console.log("/" + req.method);
-  next();
+
+app.get('/', (request, response) => { // he other hand, is part of Express' application routing and is intended for matching and handling a specific route when requested with the GET HTTP verb:
+  return response.send('OK');
 });
 
-app.get('/', (request, response) => {
-  return response.send('OK');
+app.get('/index', (request, response) => {
+  response.render('index', {
+    subject: 'EJS template engine',
+    name: 'our template',
+    link: 'https://google.com'
+  });
+});
+
+// https://stackoverflow.com/questions/15601703/difference-between-app-use-and-app-get-in-express-js#:~:text=app.get%20is%20called%20when%20the%20HTTP%20method%20is,you%20access%20to.%20Difference%20between%20app.use%20%26%20app.get%3A
+//app.use("/",router); // <--- binging middleware, sets root path for 'app' and use router for subpaths 
+//  limits the middleware to only apply to any paths requested that begin with it
+
+
+
+router.use(function (req,res,next) {  // <---- use chain of javascript functions on this path 
+  console.log("/" + req.method + "  req = " + req.ip);
+  next();
 });
 
 //router.get("/",function(req,res){
 //  res.sendFile(path + "index.ejs");
 //});
+
+router.get("/",function(req,res){
+  return res.send('OK');
+});
 
 router.get("/about",function(req,res){
   res.sendFile(path + "about.html");
@@ -170,7 +186,9 @@ router.get("/*",function(req,res){
   res.sendFile(path + "404.html");
 });
 
-
+app.use("*",function(req,res){
+  res.sendFile(path + "404.html");
+});
 
 
 

@@ -19,11 +19,18 @@ app.set('views', path);
 //});
 
 app.get('/index', (request, response) => {
+  var posts = [
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" }
+  ];
+
   response.render('index', {
     subject: 'morozovme',
     name: 'our template',
     link: 'https://google.com',
-    focus: 'blog'
+    focus: 'blog',
+    posts: posts /* pass posts from database */
   });
 });
 
@@ -35,6 +42,7 @@ app.get('/pet', (request, response) => {
     focus: 'pet'
   });
 });
+
 
 // https://stackoverflow.com/questions/15601703/difference-between-app-use-and-app-get-in-express-js#:~:text=app.get%20is%20called%20when%20the%20HTTP%20method%20is,you%20access%20to.%20Difference%20between%20app.use%20%26%20app.get%3A
 app.use("/",router); // <--- binging middleware, sets root path for 'app' and use router for subpaths 

@@ -1,8 +1,14 @@
 <div>
 <nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
     <ul class="nav navbar-nav">
-    <li class="active"><a href="/">Personal Blog</a></li>
-    <li><a href="/pet">Projects</a></li>
+    <li <% if (focus === 'blog') { %>
+        class="active"
+        <% } %>
+        ><a href="/">Personal Blog</a></li>
+    <li  <% if (focus === 'pet') { %>
+        class="active"
+        <% } %>
+    ><a href="/pet">Projects</a></li>
     <li><a href="/videos">Videos</a></li>
     <li><a href="/articles">Articles</a></li>
     <li><a href="/mentorship">Mentorship</a></li>

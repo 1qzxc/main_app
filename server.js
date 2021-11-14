@@ -18,7 +18,7 @@ app.set('views', path);
 //  return response.send('OK');
 //});
 
-app.get('/index', (request, response) => {
+app.get('/', (request, response) => {
   var posts = [
     { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
     { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
@@ -35,6 +35,13 @@ app.get('/index', (request, response) => {
 });
 
 app.get('/pet', (request, response) => {
+  
+  var projects = [
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" }
+  ];
+  
   response.render('pet', {
     subject: 'Study projects',
     entity: 'Study projects',
@@ -43,15 +50,52 @@ app.get('/pet', (request, response) => {
   });
 });
 
+app.get('/mentorship', (request, response) => {
+  response.render('mentorship', {
+    subject: 'Study projects',
+    entity: 'Study projects',
+    link: 'https://google.com',
+    focus: 'mentorship'
+  });
+});
+
+app.get('/articles', (request, response) => {
+  response.render('articles', {
+    subject: 'Articles',
+    entity: 'Articles',
+    link: 'https://google.com',
+    focus: 'articles'
+  });
+});
+
+app.get('/videos', (request, response) => {
+  response.render('videos', {
+    subject: 'Videos',
+    entity: 'Videos',
+    link: 'https://google.com',
+    focus: 'videos'
+  });
+});
+
+app.get('/about', (request, response) => {
+  response.render('about', {
+    subject: 'about',
+    entity: 'about',
+    link: 'https://google.com',
+    focus: 'about'
+  });
+});
+
+
 
 // https://stackoverflow.com/questions/15601703/difference-between-app-use-and-app-get-in-express-js#:~:text=app.get%20is%20called%20when%20the%20HTTP%20method%20is,you%20access%20to.%20Difference%20between%20app.use%20%26%20app.get%3A
-app.use("/",router); // <--- binging middleware, sets root path for 'app' and use router for subpaths 
+//app.use("/",router); // <--- binging middleware, sets root path for 'app' and use router for subpaths 
 //  limits the middleware to only apply to any paths requested that begin with it
 
-router.use(function (req,res,next) {  // <---- use chain of javascript functions on this path 
-  console.log("/" + req.method + "  req = " + req.ip);
-  next();
-});
+//router.use(function (req,res,next) {  // <---- use chain of javascript functions on this path 
+//  console.log("/" + req.method + "  req = " + req.ip);
+//  next();
+//});
 
 //router.get("/",function(req,res){
 //  res.sendFile(path + "index.ejs");
@@ -205,8 +249,6 @@ router.get("/*",function(req,res){
 app.use("*",function(req,res){
   res.sendFile(path + "404.html");
 });
-
-
 
 app.listen(8089,function(){
   console.log("Live at Port 8089");

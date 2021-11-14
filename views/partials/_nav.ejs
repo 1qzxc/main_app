@@ -5,14 +5,33 @@
         class="active"
         <% } %>
         ><a href="/">Personal Blog</a></li>
+    
     <li  <% if (focus === 'pet') { %>
         class="active"
         <% } %>
     ><a href="/pet">Projects</a></li>
-    <li><a href="/videos">Videos</a></li>
-    <li><a href="/articles">Articles</a></li>
-    <li><a href="/mentorship">Mentorship</a></li>
-    <li><a href="/about">About</a></li>
+
+    <li <% if (focus === 'videos') { %>
+        class="active"
+        <% } %>
+        ><a href="/videos">Videos</a></li>
+    
+    <li <% if (focus === 'articles') { %>
+        class="active"
+        <% } %>
+        ><a href="/articles">Articles</a></li>
+
+    <li <% if (focus === 'mentorship') { %>
+        class="active"
+        <% } %>
+        ><a href="/mentorship">Mentorship</a></li>
+
+    <li <% if (focus === 'about') { %>
+        class="active"
+        <% } %>
+        ><a href="/about">About</a></li>
+
+
     </ul>
 </nav>
 </div>

@@ -105,26 +105,6 @@ router.get("/",function(req,res){
   res.sendFile(path + "index.html");
 });
 
-router.get("/about",function(req,res){
-  res.sendFile(path + "about.html");
-});
-
-router.get("/mentorship",function(req,res){
-  res.sendFile(path + "mentorship.html");
-});
-
-router.get("/articles",function(req,res){
-  res.sendFile(path + "articles.html");
-});
-
-router.get("/videos",function(req,res){
-  res.sendFile(path + "videos.html");
-});
-
-router.get("/projects",function(req,res){
-  res.sendFile(path + "projects.html");
-});
-
 router.get("/nodejs-blogapp",function(req,res){
   res.sendFile(path + "nodejs-blogapp.html");
 });
@@ -216,7 +196,6 @@ router.get("/nas",function(req,res){
 router.get("/sqlite",function(req,res){
   res.sendFile(path + "sqlite.html");
 });
-
 
 router.get("/mysql",function(req,res){
   res.sendFile(path + "mysql.html");

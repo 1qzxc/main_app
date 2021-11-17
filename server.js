@@ -1,14 +1,105 @@
-var express = require("express");
-var app = express();
-var router = express.Router();
-var path = __dirname + '/views/';
+const express = require("express");
+const app = express();
+const router = express.Router();
+const path = __dirname + '/views/';
+//const path = require('path');
+
+// reowrks using ejs + https://blog.logrocket.com/top-express-js-template-engines-for-dynamic-html-pages/ 
+// remove public dir in order to render pages using EJS on the fly and send them
+const publicDir = require('path').join(__dirname,'/views/public');
+app.use(express.static(publicDir));
+
+// on the differences between app.set,get,router.get : https://stackoverflow.com/questions/27227650/difference-between-app-use-and-router-use-in-express
+app.set("view engine", "ejs");
+app.set('views', path);
 
 
+//app.get('/', (request, response) => { // he other hand, is part of Express' application routing and is intended for matching and handling a specific route when requested with the GET HTTP verb:
+//  return response.send('OK');
+//});
 
-router.use(function (req,res,next) {
-  console.log("/" + req.method);
-  next();
+app.get('/', (request, response) => {
+  var posts = [
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
+    { title: 'Title 2', text: "some text for number 2", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
+    { title: 'Title 3', text: "some text for number 3", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" }
+  ];
+
+  response.render('index', {
+    subject: 'morozovme',
+    name: 'our template',
+    link: 'https://google.com',
+    focus: 'blog',
+    posts: posts /* pass posts from database */
+  });
 });
+
+app.get('/pet', (request, response) => {
+  
+  var projects = [
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" }
+  ];
+  
+  response.render('pet', {
+    subject: 'Study projects',
+    entity: 'Study projects',
+    link: 'https://google.com',
+    focus: 'pet'
+  });
+});
+
+app.get('/mentorship', (request, response) => {
+  response.render('mentorship', {
+    subject: 'Study projects',
+    entity: 'Study projects',
+    link: 'https://google.com',
+    focus: 'mentorship'
+  });
+});
+
+app.get('/articles', (request, response) => {
+  response.render('articles', {
+    subject: 'Articles',
+    entity: 'Articles',
+    link: 'https://google.com',
+    focus: 'articles'
+  });
+});
+
+app.get('/videos', (request, response) => {
+  response.render('videos', {
+    subject: 'Videos',
+    entity: 'Videos',
+    link: 'https://google.com',
+    focus: 'videos'
+  });
+});
+
+app.get('/about', (request, response) => {
+  response.render('about', {
+    subject: 'about',
+    entity: 'about',
+    link: 'https://google.com',
+    focus: 'about'
+  });
+});
+
+
+
+// https://stackoverflow.com/questions/15601703/difference-between-app-use-and-app-get-in-express-js#:~:text=app.get%20is%20called%20when%20the%20HTTP%20method%20is,you%20access%20to.%20Difference%20between%20app.use%20%26%20app.get%3A
+app.use("/",router); // <--- binging middleware, sets root path for 'app' and use router for subpaths 
+//  limits the middleware to only apply to any paths requested that begin with it
+
+//router.use(function (req,res,next) {  // <---- use chain of javascript functions on this path 
+//  console.log("/" + req.method + "  req = " + req.ip);
+//  next();
+//});
+
+//router.get("/",function(req,res){
+//  res.sendFile(path + "index.ejs");
+//});
 
 router.get("/",function(req,res){
   res.sendFile(path + "index.html");
@@ -155,18 +246,9 @@ router.get("/*",function(req,res){
   res.sendFile(path + "404.html");
 });
 
-
-app.set("view engine", "ejs");
-
-var publicDir = require('path').join(__dirname,'/views/public');
-app.use(express.static(publicDir));
-
-app.use("/",router);
-
 app.use("*",function(req,res){
   res.sendFile(path + "404.html");
 });
-
 
 app.listen(8089,function(){
   console.log("Live at Port 8089");

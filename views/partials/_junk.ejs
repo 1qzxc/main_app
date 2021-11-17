@@ -1,0 +1,36 @@
+<!-- rework with https://github.com/StartBootstrap/startbootstrap-blog-post/blob/master/src/pug/index.pug -->
+
+<!-- Page content-->
+<!-- <ul> -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+        <% posts.forEach(function(post) { %>
+        <article>
+        <!-- Post header-->
+        <header class="mb-4">
+        <!-- Post title-->
+        <h1 class="fw-bolder mb-1"><%= post.title %></h1>
+        <!-- Post meta content-->
+        <div class="text-muted fst-italic mb-2"><%= post.date %></div>
+        <!-- Post categories-->
+
+        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+
+        </header>
+        
+        <!-- <li> -->
+        
+        
+        <figure class="mb-4"><img class="img-fluid rounded" src="<%= post.imageURL %>"></figure>
+        <p><%= post.text %></p>
+
+        <!-- </li> -->
+
+        <% }); %>
+      </div>
+    </div>
+</div>
+<!--   </ul> -->
+

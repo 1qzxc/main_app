@@ -6,8 +6,8 @@ const path = __dirname + '/views/';
 
 // reowrks using ejs + https://blog.logrocket.com/top-express-js-template-engines-for-dynamic-html-pages/ 
 // remove public dir in order to render pages using EJS on the fly and send them
-//const publicDir = require('path').join(__dirname,'/views/public');
-//app.use(express.static(publicDir));
+const publicDir = require('path').join(__dirname,'/views/public');
+app.use(express.static(publicDir));
 
 // on the differences between app.set,get,router.get : https://stackoverflow.com/questions/27227650/difference-between-app-use-and-router-use-in-express
 app.set("view engine", "ejs");
@@ -20,9 +20,9 @@ app.set('views', path);
 
 app.get('/', (request, response) => {
   var posts = [
-    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://via.placeholder.com/400", date: "Jan 1 2021" },
-    { title: 'Title 2', text: "some text for number 2", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com", date: "Jan 1 2021" },
-    { title: 'Title 3', text: "some text for number 3", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com", date: "Jan 1 2021" }
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
+    { title: 'Title 2', text: "some text for number 2", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
+    { title: 'Title 3', text: "some text for number 3", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" }
   ];
 
   response.render('index', {
@@ -89,7 +89,7 @@ app.get('/about', (request, response) => {
 
 
 // https://stackoverflow.com/questions/15601703/difference-between-app-use-and-app-get-in-express-js#:~:text=app.get%20is%20called%20when%20the%20HTTP%20method%20is,you%20access%20to.%20Difference%20between%20app.use%20%26%20app.get%3A
-//app.use("/",router); // <--- binging middleware, sets root path for 'app' and use router for subpaths 
+app.use("/",router); // <--- binging middleware, sets root path for 'app' and use router for subpaths 
 //  limits the middleware to only apply to any paths requested that begin with it
 
 //router.use(function (req,res,next) {  // <---- use chain of javascript functions on this path 

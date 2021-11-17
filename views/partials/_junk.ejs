@@ -1,0 +1,11 @@
+<!-- rework with https://github.com/StartBootstrap/startbootstrap-blog-post/blob/master/src/pug/index.pug -->
+<ul>
+    <% posts.forEach(function(post) { %>
+      <li>
+        <h1 class="fw-bolder mb-1"><%= post.title %></h1>
+        <div class="text-muted fst-italic mb-2"><%= post.date %></div>
+        <img src="<%= post.imageURL %>">
+        <p><%= post.text %></p>
+      </li>
+    <% }); %>
+  </ul>

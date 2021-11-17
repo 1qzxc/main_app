@@ -15,21 +15,9 @@
         <h2>Welcome</h2>
         <p>Here is the homepage for <%= name %></p>
       </header>
-      <section>
-        <% posts.forEach(function(post)  { %>
-          <h5><%= post.title %></h5>
-          <img src="<%= post.imageURL %>">
-        <% }); %>
-      </section>
-      <ul>
-        <% posts.forEach(function(post) { %>
-          <li>
-            <strong><%= post.title %></strong>
-            representing <%= post.text %>,
-            born <%= post.imageURL %>
-          </li>
-        <% }); %>
-      </ul>
+      <%- include('./partials/_junk'); %>
+
+
       <%- include('./partials/_footer'); %>
     </div>
   </body>

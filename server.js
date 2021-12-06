@@ -60,11 +60,19 @@ app.get('/mentorship', (request, response) => {
 });
 
 app.get('/articles', (request, response) => {
+  var articles = [
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
+    { title: 'Title 2', text: "some text for number 2", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
+    { title: 'Title 3', text: "some text for number 3", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" }
+  ];
+
+  
   response.render('articles', {
     subject: 'Articles',
     entity: 'Articles',
     link: 'https://google.com',
-    focus: 'articles'
+    focus: 'articles',
+    articles: articles /* pass posts from database */
   });
 });
 

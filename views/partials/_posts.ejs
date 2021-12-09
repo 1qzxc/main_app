@@ -38,9 +38,9 @@
         <% post.music.forEach(function(song) { %>
         <figure>
           <figcaption><%= song.name %></figcaption>
-          <audio
+          <audio preload="none"
               controls
-              src="<%= 'morozovme.com:1337' + song.url %>">
+              src="<%= 'http://morozovme.com:1337' + song.url %>">
                   Your browser does not support the
                   <code>audio</code> element.
           </audio>

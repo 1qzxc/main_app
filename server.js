@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 const path = __dirname + '/views/';
+const request = require('request');
+const fetch = require('cross-fetch');
+
+
 //const path = require('path');
 
 // reowrks using ejs + https://blog.logrocket.com/top-express-js-template-engines-for-dynamic-html-pages/ 
@@ -18,11 +22,25 @@ app.set('views', path);
 //  return response.send('OK');
 //});
 
-app.get('/', (request, response) => {
+async function getPosts() {
+  const response1 = await fetch(`http://192.168.1.180:1337/posts`);
+  const data = await response1.json();
+  //console.log(data);
+  //console.log(data[0].pictures);
+  return data
+}
+
+
+app.get('/', async function (request, response, next)  {
+
+  var posts2 = await getPosts();
+  //console.log(posts2)
+  //console.log(posts2[0].pictures[0].formats.small.url)
+  console.log(posts2[0].music[0])
   var posts = [
-    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
-    { title: 'Title 2', text: "some text for number 2", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
-    { title: 'Title 3', text: "some text for number 3", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" }
+    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['FaceBook'], url: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
+    { title: 'Title 2', text: "some text for number 2", tags: ['VK'], url: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
+    { title: 'Title 3', text: "some text for number 3", tags: ['Instagram'], url: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" }
   ];
 
   response.render('index', {
@@ -30,7 +48,7 @@ app.get('/', (request, response) => {
     name: 'our template',
     link: 'https://google.com',
     focus: 'blog',
-    posts: posts /* pass posts from database */
+    posts: posts2 /* pass posts from database */
   });
 });
 
@@ -60,8 +78,12 @@ app.get('/mentorship', (request, response) => {
 });
 
 app.get('/articles', (request, response) => {
+
+
+
+
   var articles = [
-    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
+    { title: 'Whataver floats your boat', text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
     { title: 'Title 2', text: "some text for number 2", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
     { title: 'Title 3', text: "some text for number 3", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" }
   ];

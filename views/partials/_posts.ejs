@@ -3,7 +3,7 @@
 <!-- Page content-->
 <!-- <ul> -->
 
-      <div class="col-lg-8">
+      <div class="col">
         <% posts.forEach(function(post) { %>
         <!-- Post content -->
         <article>
@@ -15,26 +15,39 @@
         <div class="text-muted fst-italic mb-2"><%= post.date %></div>
         <!-- Post categories-->
 
-        <a class="badge bg-secondary text-decoration-none link-light" href="#!">VK</a>
-
+        
+          <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= post.tag %></a>
+        
         </header>
         <!-- Post content-->
         <!-- <li> -->
         
         <!-- Preview image figure-->
-        <figure class="mb-4"><img class="img-fluid rounded" src="<%= post.imageURL %>"></figure>
+        <div class="container">
+          <div class="row">
+        <% post.pictures.forEach(function(picture) { %>
+        <div class="col-md-4 mt-3 col-lg-4">
+          <figure class="shadow-lg p-3 mb-5 bg-body rounded"><img class="img-fluid rounded " src="<%= 'http://morozovme.com:1337' + picture.formats.small.url %>"></figure>
+        </div>
+        <% }); %>
+          </div>
+        </div>
         <section class="mb-5">
         <p class="fs-5 mb-4"><%= post.text %></p>
+
+        <% post.music.forEach(function(song) { %>
         <figure>
-          <figcaption>Listen to the T-Rex:</figcaption>
+          <figcaption><%= song.name %></figcaption>
           <audio
               controls
-              src="/media/cc0-audio/t-rex-roar.mp3">
+              src="<%= 'morozovme.com:1337' + song.url %>">
                   Your browser does not support the
                   <code>audio</code> element.
           </audio>
         </figure>
-      
+        <% }); %>
+
+
         </section>
         <!-- </li> -->
         </article>

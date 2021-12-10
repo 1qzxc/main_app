@@ -36,7 +36,7 @@ app.get('/', async function (request, response, next)  {
   var posts2 = await getPosts();
   //console.log(posts2)
   //console.log(posts2[0].pictures[0].formats.small.url)
-  console.log(posts2[0].music[0])
+  //console.log(posts2[0].music[0])
   var posts = [
     { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['FaceBook'], url: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
     { title: 'Title 2', text: "some text for number 2", tags: ['VK'], url: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },

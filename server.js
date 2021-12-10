@@ -79,17 +79,13 @@ app.get('/mentorship', (request, response) => {
 
 app.get('/articles', (request, response) => {
 
-
-
-
   var articles = [
     { title: 'Whataver floats your boat', text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
     { title: 'Title 2', text: "some text for number 2", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
     { title: 'Title 3', text: "some text for number 3", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" }
   ];
 
-  
-  response.render('articles', {
+    response.render('articles', {
     subject: 'Articles',
     entity: 'Articles',
     link: 'https://google.com',
@@ -115,6 +111,15 @@ app.get('/about', (request, response) => {
     focus: 'about'
   });
 });
+
+app.get('/ansible', (request, response) => {
+  response.render('ansible', {
+    subject: 'ansible',
+    entity: 'ansible',
+    focus: 'pet'
+  });
+});
+
 
 
 
@@ -239,9 +244,6 @@ router.get("/virtualization",function(req,res){
   res.sendFile(path + "virtualization.html");
 });
 
-router.get("/ansible",function(req,res){
-  res.sendFile(path + "ansible.html");
-});
 
 router.get("/gitlabci",function(req,res){
   res.sendFile(path + "gitlabci.html");

@@ -3,21 +3,21 @@
 <!-- Page content-->
 <!-- <ul> -->
 
-      <div class="col">
+      <div class="col  blog-main">
+        <h1 class="pb-3 mb-4 font-italic border-bottom">
+          Personal Blog
+        </h1>
         <% posts.forEach(function(post) { %>
         <!-- Post content -->
         <article>
         <!-- Post header-->
         <header class="mb-4">
         <!-- Post title-->
-        <h1 class="fw-bolder mb-1"><%= post.title %></h1>
+        <h2 class="blog-post-title"><%= post.title %></h2>
         <!-- Post meta content-->
-        <div class="text-muted fst-italic mb-2"><%= post.date %></div>
+        <div class="blog-post-meta"><%= post.date %></div>
         <!-- Post categories-->
-
-        
           <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= post.tag %></a>
-        
         </header>
         <!-- Post content-->
         <!-- <li> -->
@@ -32,9 +32,17 @@
           <% }); %>
           </div>
         </div>
-        <section class="mb-5">
-        <p class="fs-5 mb-4"><%= post.text %></p>
-
+        <section class="mb-5 bg-cover">
+          <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Тыц
+          </button>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <p class="fs-6 mb-4 bg-transparent shadow-lg p-3 mb-5 rounded"> <%= post.text %></p>
+            </div>
+          </div>
+        
+        <hr>
         <% post.music.forEach(function(song) { %>
         <figure>
           <figcaption><%= song.name %></figcaption>

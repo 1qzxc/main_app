@@ -7,7 +7,7 @@
         <h1 class="pb-3 mb-4 font-italic border-bottom">
           Personal Blog
         </h1>
-        <% posts.forEach(function(post) { %>
+        <% posts.reverse().forEach(function(post) { %>
         <!-- Post content -->
         <article>
         <!-- Post header-->
@@ -17,7 +17,7 @@
         <!-- Post meta content-->
         <div class="blog-post-meta"><%= post.date %></div>
         <!-- Post categories-->
-          <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= post.tag %></a>
+          <a class="badge bg-secondary text-decoration-none link-light" href="https://vk.com/mikefrostov"><%= post.tag %></a>
         </header>
         <!-- Post content-->
         <!-- <li> -->
@@ -27,34 +27,53 @@
           <div class="row">
           <% post.pictures.forEach(function(picture) { %>
             <div class="col-md-4 mt-3 col-lg-4">
-              <figure class="shadow-lg p-3 mb-5 bg-body rounded"><img class="img-fluid rounded " src="<%= 'http://morozovme.com:1337' + picture.formats.small.url %>"></figure>
+              <figure class="shadow-lg p-3 mb-5 bg-body rounded"><img class="img-fluid rounded " src="<%= 'http://media.mikefrostov.io' + picture.formats.small.url %>"></figure>
             </div>
           <% }); %>
           </div>
         </div>
+        <% if(post.text) { %>
         <section class="mb-5 bg-cover">
-          <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <button class="btn btn-primary border border-primary border-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >
             Тыц
           </button>
+          <br>
           <div class="collapse" id="collapseExample">
             <div class="card card-body">
               <p class="fs-6 mb-4 bg-transparent shadow-lg p-3 mb-5 rounded"> <%= post.text %></p>
             </div>
           </div>
+        <% }; %>
+
+        <% post.video.forEach(function(video) { %>
+          <div class="overlay">
+            <div class="title">
+              <%= video.name %>
+            </div>
+          </div>
+          <div class="ratio ratio-21x9 bg-dark">
+            <video controls src="<%= 'http://media.mikefrostov.io' + video.url %>"></video>
+          </div>
+        <% }); %>
+
+        <br>
         
-        <hr>
         <% post.music.forEach(function(song) { %>
         <figure>
           <figcaption><%= song.name %></figcaption>
           <audio preload="none"
               controls
-              src="<%= 'http://morozovme.com:1337' + song.url %>">
+              src="<%= 'http://media.mikefrostov.io' + song.url %>">
                   Your browser does not support the
                   <code>audio</code> element.
           </audio>
         </figure>
         <% }); %>
-
+        <br>
+        <br>
+        <hr>
+        <br>
+        <br>
         <script>
           function onlyPlayOneIn(container) {
             container.addEventListener("play", function(event) {

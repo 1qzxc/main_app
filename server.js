@@ -44,7 +44,7 @@ app.get('/', async function (request, response, next)  {
   ];
 
   response.render('index', {
-    subject: 'morozovme',
+    subject: 'mikefrostov',
     name: 'our template',
     link: 'https://google.com',
     focus: 'blog',

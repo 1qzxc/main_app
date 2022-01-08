@@ -37,6 +37,14 @@ services:
     ports:
       - "27017:27017"
 
+  mainapp:
+    build: ./
+    container_name: mainapp
+    networks:
+      - strapi-app-network
+    ports:
+      - "8089:8089"
+
 networks:
   strapi-app-network:
     driver: bridge

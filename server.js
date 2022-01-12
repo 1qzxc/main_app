@@ -32,27 +32,6 @@ async function getPosts() {
 
 
 app.get('/', async function (request, response, next)  {
-
-  var posts2 = await getPosts();
-  //console.log(posts2)
-  //console.log(posts2[0].pictures[0].formats.small.url)
-  //console.log(posts2[0].music[0])
-  var posts = [
-    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['FaceBook'], url: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
-    { title: 'Title 2', text: "some text for number 2", tags: ['VK'], url: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
-    { title: 'Title 3', text: "some text for number 3", tags: ['Instagram'], url: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" }
-  ];
-
-  response.render('index', {
-    subject: 'mikefrostov',
-    name: 'our template',
-    link: 'https://google.com',
-    focus: 'blog',
-    posts: posts2 /* pass posts from database */
-  });
-});
-
-app.get('/pet', (request, response) => {
   
   var projects = [
     { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
@@ -66,6 +45,8 @@ app.get('/pet', (request, response) => {
     link: 'https://google.com',
     focus: 'pet'
   });
+
+
 });
 
 app.get('/mentorship', (request, response) => {

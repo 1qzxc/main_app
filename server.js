@@ -23,7 +23,7 @@ app.set('views', path);
 //});
 
 async function getPosts() {
-  const response1 = await fetch(`http://192.168.1.180:1337/posts`);
+  const response1 = await fetch(`http://192.168.1.201:1337/posts`);
   const data = await response1.json();
   //console.log(data);
   //console.log(data[0].pictures);

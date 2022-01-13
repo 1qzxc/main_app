@@ -1,6 +1,7 @@
 <%- include('./partials/_head'); %>
   <body>
     <%- include('./partials/_nav'); %>
+    
     <div class="container">
       <div class="row">
         <div class="col-lg-8">
@@ -10,21 +11,24 @@
           <hr>
 
           <br>
+          <% categories.forEach(function(category) { %>
+          <h3> <%= category.name %> </h3>
+          <% category.projects.forEach(function(project) { %>
+            <div class="list-group">
+              <a href="<%= category.projects.projUrl %>" class="list-group-item">
+              <h4 class="list-group-item-heading"> <%= project.title %> </h4>
+                <p class="list-group-item-text"> <%= project.description %> </p>
+              </a>
+            </div>
+            <% }); %>
 
-          <h3> Web-app Development </h3>
-          <% projects.forEach(function(project) { %>
-          <div class="list-group">
-            <a href="<%= projects.projUrl %>" class="list-group-item">
-            <h4 class="list-group-item-heading"> <%= project.title %> </h4>
-              <p class="list-group-item-text"> <%= project.description %> </p>
-            </a>
           <% }); %>
-          </div>
         </div>
       </div>
     </div>
     <br>
     <hr>
+  
     <%- include('./partials/_footer'); %>
   </body>
 <%- include('./partials/_end'); %>

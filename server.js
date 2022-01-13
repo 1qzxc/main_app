@@ -32,19 +32,31 @@ async function getPosts() {
 
 
 app.get('/', async function (request, response, next)  {
-  
-  var projects = [
+  // fetch list of categories 
+  // for each category fetch list of projects
+  // push 
+
+  var projects2 = [
     { title: 'Whataver floats your boat', description: "Once a year I floate my boat", projUrl: "http//http://192.168.1.201:8089/nodejs-blogapp" },
     { title: 'Whataver floats your boat', description: "Once a year I floate my boat", projUrl: "http//http://192.168.1.201:8089/grafana.html" },
     { title: 'Whataver floats your boat', description: "Once a year I floate my boat", projUrl: "http//http://192.168.1.201:8089/python-flask" }
   ];
-  
+
+
+  var categories = [
+    { name: 'Web-app Development', projects: projects2},
+    { name: 'IaC', projects: projects2 },
+    { name: 'Administration', projects: projects2 },
+  ]
+
+
+
   response.render('pet', {
     subject: 'Study projects',
     entity: 'Study projects',
     link: 'https://google.com',
     focus: 'pet',
-    projects: projects
+    categories: categories
   });
 
 
@@ -60,6 +72,7 @@ app.get('/mentorship', (request, response) => {
 });
 
 app.get('/articles', (request, response) => {
+
 
   var articles = [
     { title: 'Whataver floats your boat', text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },

@@ -12,16 +12,22 @@
 
           <br>
           <% categories.forEach(function(category) { %>
+          <br>
           <h3> <%= category.name %> </h3>
+          
+          <br>
+          
           <% category.projects.forEach(function(project) { %>
             <div class="list-group">
-              <a href="<%= category.projects.projUrl %>" class="list-group-item">
+              <a href="<%= project.projUrl %>" class="list-group-item">
               <h4 class="list-group-item-heading"> <%= project.title %> </h4>
                 <p class="list-group-item-text"> <%= project.description %> </p>
               </a>
             </div>
             <% }); %>
-
+            <br>
+            
+            <br>
           <% }); %>
         </div>
       </div>

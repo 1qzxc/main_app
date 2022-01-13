@@ -36,17 +36,17 @@ app.get('/', async function (request, response, next)  {
   // for each category fetch list of projects
   // push 
 
-  var projects2 = [
-    { title: 'Whataver floats your boat', description: "Once a year I floate my boat", projUrl: "http//http://192.168.1.201:8089/nodejs-blogapp" },
-    { title: 'Whataver floats your boat', description: "Once a year I floate my boat", projUrl: "http//http://192.168.1.201:8089/grafana.html" },
-    { title: 'Whataver floats your boat', description: "Once a year I floate my boat", projUrl: "http//http://192.168.1.201:8089/python-flask" }
+  var projects = [
+    { title: 'Nodejs blog app', description: " blog.morozovme.com ", projUrl: "http://192.168.1.201:8089/nodejs-blogapp" },
+    { title: ' Grafana', description: " Home apps monitoring using grafana ", projUrl: "http://192.168.1.201:8089/grafana" },
+    { title: ' Python Flask blog ', description: "Blogging app written along with API", projUrl: "http://192.168.1.201:8089/python-flask" }
   ];
 
 
   var categories = [
-    { name: 'Web-app Development', projects: projects2},
-    { name: 'IaC', projects: projects2 },
-    { name: 'Administration', projects: projects2 },
+    { name: 'Web-app Development', projects: projects},
+    { name: 'IaC', projects: projects },
+    { name: 'Administration', projects: projects },
   ]
 
 

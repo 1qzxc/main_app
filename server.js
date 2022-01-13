@@ -34,16 +34,17 @@ async function getPosts() {
 app.get('/', async function (request, response, next)  {
   
   var projects = [
-    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
-    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
-    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" }
+    { title: 'Whataver floats your boat', description: "Once a year I floate my boat", projUrl: "http//http://192.168.1.201:8089/nodejs-blogapp" },
+    { title: 'Whataver floats your boat', description: "Once a year I floate my boat", projUrl: "http//http://192.168.1.201:8089/grafana.html" },
+    { title: 'Whataver floats your boat', description: "Once a year I floate my boat", projUrl: "http//http://192.168.1.201:8089/python-flask" }
   ];
   
   response.render('pet', {
     subject: 'Study projects',
     entity: 'Study projects',
     link: 'https://google.com',
-    focus: 'pet'
+    focus: 'pet',
+    projects: projects
   });
 
 

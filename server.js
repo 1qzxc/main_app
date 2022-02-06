@@ -23,7 +23,7 @@ app.set('views', path);
 //});
 
 async function getPosts() {
-  const response1 = await fetch(`http://strapiexample:1337/posts`);
+  const response1 = await fetch(`http://192.168.1.5:1337/posts`);
   const data = await response1.json();
   //console.log(data);
   //console.log(data[0].pictures);
@@ -33,49 +33,21 @@ async function getPosts() {
 
 app.get('/', async function (request, response, next)  {
 
-  var posts2 = await getPosts();
+  var posts = await getPosts();
   //console.log(posts2)
   //console.log(posts2[0].pictures[0].formats.small.url)
   //console.log(posts2[0].music[0])
-  var posts = [
-    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['FaceBook'], url: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
-    { title: 'Title 2', text: "some text for number 2", tags: ['VK'], url: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
-    { title: 'Title 3', text: "some text for number 3", tags: ['Instagram'], url: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" }
-  ];
 
   response.render('index', {
     subject: 'mikefrostov',
     name: 'our template',
     link: 'https://google.com',
     focus: 'blog',
-    posts: posts2 /* pass posts from database */
+    posts: posts /* pass posts from database */
   });
 });
 
-app.get('/pet', (request, response) => {
-  
-  var projects = [
-    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
-    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" },
-    { title: 'Whataver floats your boat', text: "Once a year I floate my boat", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "http//url.com" }
-  ];
-  
-  response.render('pet', {
-    subject: 'Study projects',
-    entity: 'Study projects',
-    link: 'https://google.com',
-    focus: 'pet'
-  });
-});
 
-app.get('/mentorship', (request, response) => {
-  response.render('mentorship', {
-    subject: 'Study projects',
-    entity: 'Study projects',
-    link: 'https://google.com',
-    focus: 'mentorship'
-  });
-});
 
 app.get('/articles', (request, response) => {
 

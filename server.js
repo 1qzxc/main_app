@@ -115,6 +115,13 @@ app.get('/ansible', (request, response) => {
   });
 });
 
+app.get('/nodejs-blogapp', (request, response) => {
+  response.render('nodejs-blogapp', {
+    subject: 'blogapp',
+    entity: 'blogapp',
+    focus: 'pet'
+  });
+});
 
 
 
@@ -135,9 +142,7 @@ router.get("/",function(req,res){
   res.sendFile(path + "index.html");
 });
 
-router.get("/nodejs-blogapp",function(req,res){
-  res.sendFile(path + "nodejs-blogapp.html");
-});
+
 
 router.get("/php",function(req,res){
   res.sendFile(path + "php.html");

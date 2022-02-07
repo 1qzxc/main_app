@@ -124,6 +124,32 @@ app.get('/nodejs-blogapp', (request, response) => {
 });
 
 
+app.get('/python-flask', (request, response) => {
+  response.render('python-flask', {
+    subject: 'flask',
+    entity: 'flask',
+    focus: 'pet'
+  });
+});
+
+app.get('/sitik', (request, response) => {
+  response.render('sitik', {
+    subject: 'sitik',
+    entity: 'sitik',
+    focus: 'pet'
+  });
+});
+
+app.get('/koareact', (request, response) => {
+  response.render('koareact', {
+    subject: 'koareact',
+    entity: 'koareact',
+    focus: 'pet'
+  });
+});
+
+
+
 
 // https://stackoverflow.com/questions/15601703/difference-between-app-use-and-app-get-in-express-js#:~:text=app.get%20is%20called%20when%20the%20HTTP%20method%20is,you%20access%20to.%20Difference%20between%20app.use%20%26%20app.get%3A
 app.use("/",router); // <--- binging middleware, sets root path for 'app' and use router for subpaths 
@@ -148,9 +174,6 @@ router.get("/php",function(req,res){
   res.sendFile(path + "php.html");
 });
 
-router.get("/python-flask",function(req,res){
-  res.sendFile(path + "python-flask.html");
-});
 
 router.get("/python-flask-microsvc",function(req,res){
   res.sendFile(path + "python-flask-microsvc.html");
@@ -164,9 +187,7 @@ router.get("/grafana",function(req,res){
   res.sendFile(path + "grafana.html");
 });
 
-router.get("/sitik",function(req,res){
-  res.sendFile(path + "sitik.html");
-});
+
 
 router.get("/home-lab",function(req,res){
   res.sendFile(path + "home-lab.html");
@@ -204,9 +225,7 @@ router.get("/docker",function(req,res){
   res.sendFile(path + "docker.html");
 });
 
-router.get("/koareact",function(req,res){
-  res.sendFile(path + "koareact.html");
-});
+
 
 router.get("/postgres",function(req,res){
   res.sendFile(path + "postgres.html");

@@ -148,6 +148,21 @@ app.get('/koareact', (request, response) => {
   });
 });
 
+app.get('/jquery', (request, response) => {
+  response.render('jquery', {
+    subject: 'jquery',
+    entity: 'jquery',
+    focus: 'pet'
+  });
+});
+
+app.get('/jenkins', (request, response) => {
+  response.render('jenkins', {
+    subject: 'jenkins',
+    entity: 'jenkins',
+    focus: 'pet'
+  });
+});
 
 
 
@@ -179,9 +194,6 @@ router.get("/python-flask-microsvc",function(req,res){
   res.sendFile(path + "python-flask-microsvc.html");
 });
 
-router.get("/jenkins",function(req,res){
-  res.sendFile(path + "jenkins.html");
-});
 
 router.get("/grafana",function(req,res){
   res.sendFile(path + "grafana.html");
@@ -231,9 +243,7 @@ router.get("/postgres",function(req,res){
   res.sendFile(path + "postgres.html");
 });
 
-router.get("/jquery",function(req,res){
-  res.sendFile(path + "jquery.html");
-});
+
 
 router.get("/vagrant",function(req,res){
   res.sendFile(path + "vagrant.html");

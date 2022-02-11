@@ -1,0 +1,39 @@
+<!-- rework with https://github.com/StartBootstrap/startbootstrap-blog-post/blob/master/src/pug/index.pug -->
+
+<!-- Page content-->
+<!-- <ul> -->
+
+    <div class="col-lg-8">
+        <% articles.forEach(function(article) { %>
+        <!-- Post content -->
+        <article>
+        <!-- Post header-->
+        <header class="mb-4">
+        <!-- Post title-->
+        <h1 class="fw-bolder mb-1"><%= article.title %></h1>
+        <!-- Post meta content-->
+        <div class="text-muted fst-italic mb-2"><%= article.date %></div>
+        <!-- Post categories-->
+        
+        <% article.tags.forEach(function(tag) { %>
+        <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= tag %></a>
+        <% }); %>
+
+        </header>
+        <!-- Post content-->
+        <!-- <li> -->
+        
+        <!-- Preview image figure-->
+        <figure class="mb-4"><img class="img-fluid rounded" src="<%= article.imageURL %>"></figure>
+        <section class="mb-5">
+        <p class="fs-5 mb-4"><%= article.text %></p>
+      
+        </section>
+        <!-- </li> -->
+        </article>
+        <% }); %>
+      </div>
+      
+
+<!--   </ul> -->
+

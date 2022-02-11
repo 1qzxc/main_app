@@ -22,41 +22,14 @@ app.set('views', path);
 //  return response.send('OK');
 //});
 
-async function getPosts() {
-  const response1 = await fetch(`http://192.168.1.201:1337/posts`);
-  const data = await response1.json();
-  //console.log(data);
-  //console.log(data[0].pictures);
-  return data
-}
 
-
-app.get('/', async function (request, response, next)  {
-  // fetch list of categories 
-  // for each category fetch list of projects
-  // push 
-
-  var projects = [
-    { title: 'Nodejs blog app', description: " blog.morozovme.com ", projUrl: "http://192.168.1.201:8089/nodejs-blogapp" },
-    { title: ' Grafana', description: " Home apps monitoring using grafana ", projUrl: "http://192.168.1.201:8089/grafana" },
-    { title: ' Python Flask blog ', description: "Blogging app written along with API", projUrl: "http://192.168.1.201:8089/python-flask" }
-  ];
-
-
-  var categories = [
-    { name: 'Web-app Development', projects: projects},
-    { name: 'IaC', projects: projects },
-    { name: 'Administration', projects: projects },
-  ]
-
-
+app.get('/', (request, response) =>  {
 
   response.render('pet', {
     subject: 'Study projects',
     entity: 'Study projects',
     link: 'https://google.com',
-    focus: 'pet',
-    categories: categories
+    focus: 'pet'
   });
 
 

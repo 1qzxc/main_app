@@ -191,6 +191,57 @@ app.get('/home-lab', (request, response) => {
 });
 
 
+app.get('/rvproxy', (request, response) => {
+  response.render('rvproxy', {
+    subject: 'rvproxy',
+    entity: 'rvproxy',
+    focus: 'pet'
+  });
+});
+
+app.get('/kubernetes', (request, response) => {
+  response.render('kubernetes', {
+    subject: 'kubernetes',
+    entity: 'kubernetes',
+    focus: 'pet'
+  });
+});
+
+app.get('/docker', (request, response) => {
+  response.render('docker', {
+    subject: 'docker',
+    entity: 'docker',
+    focus: 'pet'
+  });
+});
+
+app.get('/vagrant', (request, response) => {
+  response.render('vagrant', {
+    subject: 'vagrant',
+    entity: 'vagrant',
+    focus: 'pet'
+  });
+});
+
+app.get('/postgres', (request, response) => {
+  response.render('postgres', {
+    subject: 'postgres',
+    entity: 'postgres',
+    focus: 'pet'
+  });
+});
+
+app.get('/python-linked', (request, response) => {
+  response.render('python-linked', {
+    subject: 'python-linked',
+    entity: 'python-linked',
+    focus: 'pet'
+  });
+});
+
+
+
+
 // https://stackoverflow.com/questions/15601703/difference-between-app-use-and-app-get-in-express-js#:~:text=app.get%20is%20called%20when%20the%20HTTP%20method%20is,you%20access%20to.%20Difference%20between%20app.use%20%26%20app.get%3A
 app.use("/",router); // <--- binging middleware, sets root path for 'app' and use router for subpaths 
 //  limits the middleware to only apply to any paths requested that begin with it
@@ -204,108 +255,7 @@ app.use("/",router); // <--- binging middleware, sets root path for 'app' and us
 //  res.sendFile(path + "index.ejs");
 //});
 
-router.get("/",function(req,res){
-  res.sendFile(path + "index.html");
-});
 
-
-
-router.get("/php",function(req,res){
-  res.sendFile(path + "php.html");
-});
-
-
-router.get("/python-flask-microsvc",function(req,res){
-  res.sendFile(path + "python-flask-microsvc.html");
-});
-
-
-router.get("/grafana",function(req,res){
-  res.sendFile(path + "grafana.html");
-});
-
-
-
-router.get("/home-lab",function(req,res){
-  res.sendFile(path + "home-lab.html");
-});
-
-router.get("/ftp",function(req,res){
-  res.sendFile(path + "ftp.html");
-});
-
-router.get("/rvproxy",function(req,res){
-  res.sendFile(path + "rvproxy.html");
-});
-
-router.get("/elk",function(req,res){
-  res.sendFile(path + "elk.html");
-});
-
-router.get("/hadoop",function(req,res){
-  res.sendFile(path + "hadoop.html");
-});
-
-router.get("/cloud",function(req,res){
-  res.sendFile(path + "cloud.html");
-});
-
-router.get("/zabbix",function(req,res){
-  res.sendFile(path + "zabbix.html");
-});
-
-router.get("/kubernetes",function(req,res){
-  res.sendFile(path + "kubernetes.html");
-});
-
-router.get("/docker",function(req,res){
-  res.sendFile(path + "docker.html");
-});
-
-
-
-router.get("/postgres",function(req,res){
-  res.sendFile(path + "postgres.html");
-});
-
-
-
-router.get("/vagrant",function(req,res){
-  res.sendFile(path + "vagrant.html");
-});
-
-router.get("/prometheus",function(req,res){
-  res.sendFile(path + "prometheus.html");
-});
-
-router.get("/nas",function(req,res){
-  res.sendFile(path + "nas.html");
-});
-
-router.get("/sqlite",function(req,res){
-  res.sendFile(path + "sqlite.html");
-});
-
-router.get("/mysql",function(req,res){
-  res.sendFile(path + "mysql.html");
-});
-
-router.get("/vagrant",function(req,res){
-  res.sendFile(path + "vagrant.html");
-});
-
-router.get("/virtualization",function(req,res){
-  res.sendFile(path + "virtualization.html");
-});
-
-
-router.get("/gitlabci",function(req,res){
-  res.sendFile(path + "gitlabci.html");
-});
-
-router.get("/python-linked",function(req,res){
-  res.sendFile(path + "python-linked.html");
-});
 
 router.get("/*",function(req,res){
   res.sendFile(path + "404.html");

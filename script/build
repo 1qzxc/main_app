@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e 
-#sudo docker stop $(sudo docker ps -q --filter ancestor=morozovme/main-app )
-#sudo docker rm $(sudo docker ps --all -q --filter ancestor=morozovme/main-app )
+sudo docker stop $(sudo docker ps -q --filter ancestor=morozovme/main-app )
+sudo docker rm $(sudo docker ps --all -q --filter ancestor=morozovme/main-app )
 sudo docker build -t morozovme/main-app . 
 sudo docker run -d -p 8084:8084 morozovme/main-app

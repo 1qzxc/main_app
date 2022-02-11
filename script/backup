@@ -1,6 +1,0 @@
-#!/bin/bash
-
-DATE=$(date '+%A%B%d%Y')
-sudo mkdir -p /mnt/win_share/linuxdata/mikefrostov/$DATE/uploads
-sudo cp -r /home/vagrant/main_app/app/public/uploads /mnt/win_share/linuxdata/mikefrostov/$DATE/uploads
-sudo cp -r /var/lib/docker/volumes /mnt/win_share/linuxdata/mikefrostov/$DATE/volumes

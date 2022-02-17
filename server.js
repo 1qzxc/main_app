@@ -212,7 +212,13 @@ app.get('/python-linked', (request, response) => {
   });
 });
 
-
+app.get('/l2j', (request, response) => {
+  response.render('l2j', {
+    subject: 'l2j',
+    entity: 'l2j',
+    focus: 'pet'
+  });
+});
 
 
 // https://stackoverflow.com/questions/15601703/difference-between-app-use-and-app-get-in-express-js#:~:text=app.get%20is%20called%20when%20the%20HTTP%20method%20is,you%20access%20to.%20Difference%20between%20app.use%20%26%20app.get%3A

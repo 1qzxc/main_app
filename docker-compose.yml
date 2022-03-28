@@ -23,7 +23,7 @@ services:
       - "1337:1337"
 
   mongoexample:
-    image: mongo
+    image: mongo:4.4.6
     container_name: mongoexample
     restart: unless-stopped
     env_file: .env
@@ -34,8 +34,8 @@ services:
       - strapi-app-network
     volumes:
       - strapidata:/data/db
-    ports:
-      - "27017:27017"
+#    ports:
+#      - "27017:27017"
 
   mainapp:
     build: ./

@@ -46,7 +46,7 @@ services:
       - "8084:8084"
 
 networks:
-  strapi-app-network:
+  strapi-main-network:
     driver: bridge
 
 volumes:

@@ -21,7 +21,13 @@ app.set('views', path);
 //app.get('/', (request, response) => { // he other hand, is part of Express' application routing and is intended for matching and handling a specific route when requested with the GET HTTP verb:
 //  return response.send('OK');
 //});
-
+async function getArticles() {
+  const response1 = await fetch(`http://192.168.1.47:1337/articles`);
+  const data = await response1.json();
+  //console.log(data);
+  //console.log(data[0].pictures);
+  return data
+}
 
 app.get('/', (request, response) =>  {
 
@@ -35,16 +41,9 @@ app.get('/', (request, response) =>  {
 
 });
 
-app.get('/mentorship', (request, response) => {
-  response.render('mentorship', {
-    subject: 'Study projects',
-    entity: 'Study projects',
-    link: 'https://google.com',
-    focus: 'mentorship'
-  });
-});
-
 app.get('/articles', (request, response) => {
+
+  var articles2 = getArticles();
 
 
   var articles = [

@@ -44,6 +44,10 @@
           "localized": true
         }
       }
+    },
+    "categories": {
+      "via": "articles",
+      "collection": "category"
     }
   }
 }

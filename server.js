@@ -52,7 +52,7 @@ app.get('/', (request, response) =>  {
 app.get('/articles', async function (request, response, next)  {
 
   var articles = await getArticles();
-  console.log(articles2);
+  
   var categories = await getCategories();
 
   var articles2 = [

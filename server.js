@@ -29,6 +29,14 @@ async function getArticles() {
   return data
 }
 
+async function getCategories() {
+  const response1 = await fetch(`http://192.168.1.47:1337/categories`);
+  const data = await response1.json();
+  //console.log(data);
+  //console.log(data[0].pictures);
+  return data
+}
+
 app.get('/', (request, response) =>  {
 
   response.render('pet', {
@@ -45,6 +53,7 @@ app.get('/articles', async function (request, response, next)  {
 
   var articles = await getArticles();
   console.log(articles2);
+  var categories = await getCategories();
 
   var articles2 = [
     { title: 'Whataver floats your boat', text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
@@ -57,7 +66,8 @@ app.get('/articles', async function (request, response, next)  {
     entity: 'Articles',
     link: 'https://google.com',
     focus: 'articles',
-    articles: articles /* pass posts from database */
+    articles: articles, /* pass posts from database */
+    categories: categories
   });
 });
 

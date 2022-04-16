@@ -15,16 +15,18 @@
         <div class="text-muted fst-italic mb-2"><%= article.date %></div>
         <!-- Post categories-->
         
-        <% article.tags.forEach(function(tag) { %>
-        <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= tag %></a>
-        <% }); %>
+
 
         </header>
         <!-- Post content-->
         <!-- <li> -->
         
         <!-- Preview image figure-->
-        <figure class="mb-4"><img class="img-fluid rounded" src="<%= article.imageURL %>"></figure>
+        
+          <div >
+            <figure class="shadow-lg p-3 mb-5 bg-body rounded"><img class="img-fluid rounded " src="<%= 'http://192.168.1.47:1337' + article.picture.url %>"></figure>
+          </div>
+        
         <section class="mb-5">
         <p class="fs-5 mb-4"><%= article.text %></p>
       

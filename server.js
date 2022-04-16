@@ -21,7 +21,21 @@ app.set('views', path);
 //app.get('/', (request, response) => { // he other hand, is part of Express' application routing and is intended for matching and handling a specific route when requested with the GET HTTP verb:
 //  return response.send('OK');
 //});
+async function getArticles() {
+  const response1 = await fetch(`http://strapimain:1337/articles`);
+  const data = await response1.json();
+  //console.log(data);
+  //console.log(data[0].pictures);
+  return data
+}
 
+async function getCategories() {
+  const response1 = await fetch(`http://strapimain:1337/categories`);
+  const data = await response1.json();
+  //console.log(data);
+  //console.log(data[0].pictures);
+  return data
+}
 
 app.get('/', (request, response) =>  {
 
@@ -35,19 +49,13 @@ app.get('/', (request, response) =>  {
 
 });
 
-app.get('/mentorship', (request, response) => {
-  response.render('mentorship', {
-    subject: 'Study projects',
-    entity: 'Study projects',
-    link: 'https://google.com',
-    focus: 'mentorship'
-  });
-});
+app.get('/articles', async function (request, response, next)  {
 
-app.get('/articles', (request, response) => {
+  var articles = await getArticles();
+  
+  var categories = await getCategories();
 
-
-  var articles = [
+  var articles2 = [
     { title: 'Whataver floats your boat', text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
     { title: 'Title 2', text: "some text for number 2", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
     { title: 'Title 3', text: "some text for number 3", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" }
@@ -58,7 +66,8 @@ app.get('/articles', (request, response) => {
     entity: 'Articles',
     link: 'https://google.com',
     focus: 'articles',
-    articles: articles /* pass posts from database */
+    articles: articles, /* pass posts from database */
+    categories: categories
   });
 });
 

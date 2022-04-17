@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "article",
   "info": {
-    "name": "article"
+    "name": "article",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -32,7 +33,7 @@
       "type": "datetime"
     },
     "picture": {
-      "model": "file",
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "images"
@@ -48,6 +49,16 @@
     "categories": {
       "via": "articles",
       "collection": "category"
+    },
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true,
+      "default": "title"
     }
   }
 }

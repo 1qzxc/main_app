@@ -23,13 +23,14 @@
         
         <!-- Preview image figure-->
         
-          <div >
-            <figure class="shadow-lg p-3 mb-5 bg-body rounded"><img class="img-fluid rounded " src="<%= 'http://media.morozvme.com' + article.picture.url %>"></figure>
-          </div>
-        
-        <section class="mb-5">
-        <p class="fs-5 mb-4"><%= article.text %></p>
       
+          <div >
+            <% post.pictures.forEach(function(picture) { %>
+            <figure class="shadow-lg p-3 mb-5 bg-body rounded"><img class="img-fluid rounded " src="<%= 'http://media.morozvme.com' + picture.url %>"></figure>
+            <% }); %>
+            <section class="mb-5">
+            <p class="fs-5 mb-4"><%= article.text %></p>
+          </div>
         </section>
         <!-- </li> -->
         </article>

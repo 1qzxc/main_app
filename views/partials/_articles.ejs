@@ -26,12 +26,15 @@
       
           <div class="shadow-lg rounded">
             <section class="mb-5">
+            <br>
             <p class="fs-5 mb-4"><%= article.text %></p>
+            <br>
             </section>
             <% article.pictures.forEach(function(picture) { %>
             <figure class="shadow-lg p-3 mb-5 bg-body rounded"><img class="img-fluid rounded " src="<%= 'http://media.morozovme.com' + picture.url %>"></figure>
             <% }); %>
-            
+            <br>
+
           </div>
         
         <!-- </li> -->

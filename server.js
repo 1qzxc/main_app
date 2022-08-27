@@ -22,7 +22,7 @@ app.set('views', path);
 //  return response.send('OK');
 //});
 async function getArticles() {
-  const response1 = await fetch(`http://strapimain:1337/articles`);
+  const response1 = await fetch(`http://strapimain:1338/articles`);
   const data = await response1.json();
   //console.log(data);
   //console.log(data[0].pictures);
@@ -30,7 +30,7 @@ async function getArticles() {
 }
 
 async function getCategories() {
-  const response1 = await fetch(`http://strapimain:1337/categories`);
+  const response1 = await fetch(`http://strapimain:1338/categories`);
   const data = await response1.json();
   //console.log(data);
   //console.log(data[0].pictures);

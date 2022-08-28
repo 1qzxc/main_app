@@ -14,7 +14,9 @@
         <!-- Post meta content-->
         <div class="text-muted fst-italic mb-2"><%= article.date %></div>
         <!-- Post categories-->
-        
+        <% article.categories.forEach(function(category) { %>
+        <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= category.name %></a>
+        <% }); %> 
 
 
         </header>
@@ -27,14 +29,14 @@
           <div>
             <section class="mb-5">
             <br>
-            <p class="fs-5 mb-4"><%= article.text %></p>
-            <br>
 
-            
+             
             <% article.picture.forEach(function(picture) { %>
-            <figure class="shadow-lg p-3 mb-5 bg-body rounded"><img class="img-fluid rounded " src="<%= 'http://192.168.1.5:1338' + picture.url %>"></figure>
+            <figure class="shadow-lg p-3 mb-5 bg-body rounded"><img class="img-fluid rounded " src="<%= 'http://192.168.1.5:1337' + picture.url %>"></figure>
             <% }); %> 
 
+            <p class="fs-5 mb-4"><%= article.text %></p>
+            <br>
             </section>
             <br>
 

@@ -4,7 +4,7 @@ const router = express.Router();
 const path = __dirname + '/views/';
 const request = require('request');
 const fetch = require('cross-fetch');
-
+const backend = "http://strapimain:1337"
 
 //const path = require('path');
 
@@ -22,7 +22,8 @@ app.set('views', path);
 //  return response.send('OK');
 //});
 async function getArticles() {
-  const response1 = await fetch(`http://strapimain:1337/articles`);
+  const endpoint = backend + "/articles"
+  const response1 = await fetch(endpoint);
   const data = await response1.json();
   //console.log(data);
   //console.log(data[0].pictures);
@@ -30,7 +31,8 @@ async function getArticles() {
 }
 
 async function getCategories() {
-  const response1 = await fetch(`http://strapimain:1337/categories`);
+  const endpoint = backend + "/categories";
+  const response1 = await fetch(endpoint);
   const data = await response1.json();
   //console.log(data);
   //console.log(data[0].pictures);
@@ -54,20 +56,14 @@ app.get('/articles', async function (request, response, next)  {
   var articles = await getArticles();
   
   var categories = await getCategories();
-
-  var articles2 = [
-    { title: 'Whataver floats your boat', text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
-    { title: 'Title 2', text: "some text for number 2", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" },
-    { title: 'Title 3', text: "some text for number 3", tags: ['economy', 'politics', 'tech', 'my_thoughts'], imageURL: "https://dummyimage.com/900x400/ced4da/6c757d.jpg", date: "Jan 1 2021" }
-  ];
-
     response.render('articles', {
     subject: 'Articles',
     entity: 'Articles',
     link: 'https://google.com',
     focus: 'articles',
     articles: articles, /* pass posts from database */
-    categories: categories
+    categories: categories,
+    backend: backend
   });
 });
 

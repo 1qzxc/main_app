@@ -5,7 +5,7 @@ const path = __dirname + '/views/';
 const request = require('request');
 const fetch = require('cross-fetch');
 const backend = "http://strapimain:1337"
-
+const frontend = "http://192.168.1.5:8084"
 //const path = require('path');
 
 // reowrks using ejs + https://blog.logrocket.com/top-express-js-template-engines-for-dynamic-html-pages/ 
@@ -25,8 +25,6 @@ async function getArticles() {
   const endpoint = backend + "/articles"
   const response1 = await fetch(endpoint);
   const data = await response1.json();
-  //console.log(data);
-  //console.log(data[0].pictures);
   return data
 }
 
@@ -34,8 +32,6 @@ async function getCategories() {
   const endpoint = backend + "/categories";
   const response1 = await fetch(endpoint);
   const data = await response1.json();
-  //console.log(data);
-  //console.log(data[0].pictures);
   return data
 }
 
@@ -54,17 +50,46 @@ app.get('/', (request, response) =>  {
 app.get('/articles', async function (request, response, next)  {
 
   var articles = await getArticles();
-  
+  console.log(articles)
   var categories = await getCategories();
     response.render('articles', {
     subject: 'Articles',
     entity: 'Articles',
-    link: 'https://google.com',
     focus: 'articles',
     articles: articles, /* pass posts from database */
     categories: categories,
-    backend: backend
+    backend: backend,
+    frontend: frontend
   });
+});
+
+app.get('/categories/:id', async function (request, response, next)  {
+  categoryid = request.params.id;
+  const endpoint = backend + "/categories/" + categoryid;
+  const response1 = await fetch(endpoint);
+  var data = await response1.json();
+  console.log(data.articles)
+  var categories = await getCategories();
+
+    response.render('category', {
+    subject: 'Articles',
+    entity: 'Articles',
+    focus: 'articles',
+    articles: data.articles, /* pass posts from database */
+    categories: categories,
+    backend: backend,
+    frontend: frontend
+  });
+});
+
+
+
+router.get('/category/:id', async ctx => {
+  categoryid = ctx.params.id;
+  const endpoint = backend + "/category/"+ categoryid;
+  const response1 = await fetch(endpoint);
+  const data = await response1.json();
+  return data
 });
 
 app.get('/videos', (request, response) => {
@@ -256,13 +281,13 @@ app.use("/",router); // <--- binging middleware, sets root path for 'app' and us
 
 
 
-router.get("/*",function(req,res){
-  res.sendFile(path + "404.html");
-});
+//router.get("/*",function(req,res){
+//  res.sendFile(path + "404.html");
+//});
 
-app.use("*",function(req,res){
-  res.sendFile(path + "404.html");
-});
+//app.use("*",function(req,res){
+//  res.sendFile(path + "404.html");
+//});
 
 app.listen(8084,function(){
   console.log("Live at Port 8084");

@@ -15,7 +15,7 @@
         <div class="text-muted fst-italic mb-2"><%= article.date %></div>
         <!-- Post categories-->
         <% article.categories.forEach(function(category) { %>
-        <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= category.name %></a>
+        <a class="badge bg-secondary text-decoration-none link-light" href="<%= frontend %>/categories/<%= category.id %>"><%= category.name %></a>
         <% }); %> 
 
 

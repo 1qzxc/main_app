@@ -23,7 +23,7 @@ app.set('views', path);
 //});
 
 async function getPosts() {
-  const response1 = await fetch(`http://strapiexample:1337/posts`);
+  const response1 = await fetch(`http://strapimf:1337/posts`);
   const data = await response1.json();
   //console.log(data);
   //console.log(data[0].pictures);

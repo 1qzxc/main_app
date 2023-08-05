@@ -24,7 +24,7 @@
           <div class="row">
           <% post.pictures.forEach(function(picture) { %>
             <div class="col-md-4 mt-3 col-lg-4">
-              <figure class="shadow-lg p-3 mb-5 bg-body rounded"><img class="img-fluid rounded " src="<%= 'http://media.mikefrostov.io' + picture.url %>"></figure>
+              <figure class="shadow-lg p-3 mb-5 bg-body rounded"><img class="img-fluid rounded " src="<%= 'http://media.mikefrostov.com' + picture.url %>"></figure>
             </div>
           <% }); %>
           </div>
@@ -49,7 +49,7 @@
             </div>
           </div>
           <div class="ratio ratio-21x9 bg-dark">
-            <video controls preload="none" src="<%= 'http://media.mikefrostov.io' + video.url %>"></video>
+            <video controls preload="none" src="<%= 'http://media.mikefrostov.com' + video.url %>"></video>
           </div>
         <% }); %>
 
@@ -60,7 +60,7 @@
           <figcaption><%= song.name %></figcaption>
           <audio preload="none"
               controls
-              src="<%= 'http://media.mikefrostov.io' + song.url %>">
+              src="<%= 'http://media.mikefrostov.com' + song.url %>">
                   Your browser does not support the
                   <code>audio</code> element.
           </audio>

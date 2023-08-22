@@ -3,7 +3,7 @@ version: "3"
 services:
   strapimf:
     #    image: strapi/strapi
-    build: strapi/.
+    build: ../strapi/.
     platform: linux/arm64/v8
     container_name: strapimf
     restart: unless-stopped
@@ -21,6 +21,7 @@ services:
       - strapi-mf-network
     volumes:
       - ./app:/srv/app
+      - ../public:/src/app/public
     ports:
       - "1337:1337"
 

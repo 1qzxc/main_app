@@ -1,6 +1,6 @@
 #!/bin/bash
 
 DATE=$(date '+%A%B%d%Y')
-sudo mkdir -p /mnt/win_share/linuxdata/mikefrostov/$DATE/uploads
-sudo cp -r $HOME/Desktop/git/main_app/app/public/uploads /mnt/win_share/linuxdata/mikefrostov/$DATE/uploads
-sudo cp -r /var/lib/docker/volumes /mnt/win_share/linuxdata/mikefrostov/$DATE/volumes
+sudo mkdir -p /mnt/win_share/files/linuxdata/mikefrostov/$DATE/uploads
+sudo cp -r $HOME/Desktop/git/main_app/app/public/uploads /mnt/win_share/files/linuxdata/mikefrostov/$DATE/uploads
+sudo cp -r /var/lib/docker/volumes /mnt/win_share/files/linuxdata/mikefrostov/$DATE/volumes

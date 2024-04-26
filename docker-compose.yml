@@ -19,6 +19,7 @@ services:
       - strapi-mf-network
     volumes:
       - ./app:/srv/app
+      - /home/old/Desktop/git/public:/srv/app/public
     ports:
       - "1337:1337"
 
